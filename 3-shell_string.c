@@ -1,9 +1,8 @@
 #include "shell.h"
 
 /**
- * strlen - pointer to string
- * strcmp - number of characters printed
- * @fd: file descriptor to print to
+ * _strlen - pointer to string
+ * @str : number of characters printed
  * Return: number of chars printed
  */
 
@@ -15,6 +14,13 @@ int _strlen(char *str)
 		i++;
 	return (i);
 }
+
+/**
+ * _strcmp - function to compare two strings
+ * @str1 : the first string
+ * @str2 : the second string
+ * Return: 0
+ */
 
 int _strcmp(char *str1, char *str2)
 {

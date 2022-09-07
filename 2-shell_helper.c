@@ -1,9 +1,7 @@
 #include "shell.h"
 
 /**
- * _print - prints a string
- *
- * @str: pointer to string
+ * print - prints a string
  * @var: pointer
  * @fd: file descriptor to print to
  * Return: number of chars printed
@@ -16,9 +14,8 @@ int print(char *var, int fd)
 
 /**
  * get_func - gets a function
- * @str: pointer to string
  * @command: take command
- * Reurn: NULL
+ * Return: NULL
  */
 
 void (*get_func(char *command))(char **)

@@ -2,7 +2,7 @@
 
 /**
  * ctrl_C - Terminates the process.
- * signum: takes input from user
+ * @signum : takes input from user
  * Return 0
  */
 
@@ -14,14 +14,12 @@ void ctrl_C(int signum)
 
 /**
  * _getline - takes input from the user
- *
  * Return: the string read
  */
 
 char *_getline(void)
 {
 	int bufSize = READ_BUF, no_read, index = 0;
-
 	char *buffer = malloc(bufSize * sizeof(char));
 	char c;
 
@@ -35,9 +33,6 @@ char *_getline(void)
 		no_read = read(STDIN_FILENO, &c, 1);
 		if (c == EOF || !no_read)
 		{
-			/** checks if the input is EOT
-			  * (ctrl+D) and if it is from the terminal
-			  */
 			if (isatty(STDIN_FILENO) == 1)
 			{
 				print("\n", STDIN_FILENO);
@@ -140,6 +135,13 @@ int is_delimeter(const char *delimeters, char c)
 	return (0);
 }
 
+/**
+ * shell_execute - Function to execute shell
+ * @command : the command to be executed
+ * @cmd_type : command type to be executed
+ * Return 0
+ */
+
 void shell_execute(char **command, int cmd_type)
 {
 	int stat;
@@ -165,6 +167,12 @@ void shell_execute(char **command, int cmd_type)
 		execute(command, cmd_type);
 }
 
+/**
+ * check_command - Function to check command type
+ * @command : command to be checked
+ * Return: 0
+ */
+
 int check_command(char *command)
 {
 	int i = 0;
@@ -188,6 +196,12 @@ int check_command(char *command)
 	return (INVALID_CMD);
 }
 
+/**
+ * execute - function to execute shell command
+ * @commands : command to be executed
+ * @cmd_type : command type to be executed
+ * Return 0
+ */
 
 void execute(char **commands, int cmd_type)
 {
