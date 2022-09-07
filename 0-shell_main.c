@@ -10,7 +10,7 @@
  * Return: 1 on success
  */
 
-int main (int argc __attribute__((unused)),
+int main(int argc __attribute__((unused)),
 		char **argv)
 {
 	char *line;
@@ -18,14 +18,12 @@ int main (int argc __attribute__((unused)),
 	int cmd_type;
 
 	(void) argv;
-	
 	signal(SIGINT, ctrl_C);
 
 	while (1)
 	{
 		print(" ($) ", STDOUT_FILENO);
 		line = _getline();
-		
 		if (line == NULL)
 		{
 			if (isatty(STDIN_FILENO))

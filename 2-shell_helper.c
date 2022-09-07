@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
- * _printf - prints a string
+ * _print - prints a string
  *
  * @str: pointer to string
+ * @var: pointer
  * @fd: file descriptor to print to
  * Return: number of chars printed
  */
@@ -13,6 +14,13 @@ int print(char *var, int fd)
 	return (write(fd, var, _strlen(var)));
 }
 
+/**
+ * get_func - gets a function
+ * @str: pointer to string
+ * @command: take command
+ * Reurn: NULL
+ */
+
 void (*get_func(char *command))(char **)
 {
 	int i;
@@ -20,7 +28,7 @@ void (*get_func(char *command))(char **)
 	map_func map[] = {
 		{"env", env},
 		{"cd", ch_dir},
-		{"exit", quit}	
+		{"exit", quit}
 	};
 
 	for (i = 0; i < 3; i++)

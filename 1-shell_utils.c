@@ -2,7 +2,7 @@
 
 /**
  * ctrl_C - Terminates the process.
- * signum: 
+ * signum: takes input from user
  * Return 0
  */
 
@@ -20,7 +20,7 @@ void ctrl_C(int signum)
 
 char *_getline(void)
 {
-	int bufSize = READ_BUF, no_read, position = 0;
+	int bufSize = READ_BUF, no_read, index = 0;
 
 	char *buffer = malloc(bufSize * sizeof(char));
 	char c;
@@ -35,9 +35,9 @@ char *_getline(void)
 		no_read = read(STDIN_FILENO, &c, 1);
 		if (c == EOF || !no_read)
 		{
-			/* checks if the input is EOT 
-			 	(ctrl+D) and if it is from the terminal
-			*/
+			/** checks if the input is EOT
+			  * (ctrl+D) and if it is from the terminal
+			  */
 			if (isatty(STDIN_FILENO) == 1)
 			{
 				print("\n", STDIN_FILENO);
@@ -46,20 +46,20 @@ char *_getline(void)
 		}
 		else if (c == '\n' || !no_read)
 		{
-			buffer[position] = '\0';
+			buffer[index] = '\0';
 			return (buffer);
 		}
 		else
-			buffer[position] = c;
-		position++;
+			buffer[index] = c;
+		index++;
 
-		if (position >= bufSize)
+		if (index >= bufSize)
 		{
 			bufSize += READ_BUF;
 			buffer = _realloc(buffer, READ_BUF, bufSize);
 			if (!buffer)
 			{
-				perror("Failed to re-allocate a space in the memory");
+				perror("Failed to re-allocate space to memory");
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -128,6 +128,7 @@ char **tokenize(char *str, const char *delim)
 int is_delimeter(const char *delimeters, char c)
 {
 	int i = 0;
+
 	if (!delimeters)
 		return (0);
 	while (delimeters[i])
@@ -185,7 +186,6 @@ int check_command(char *command)
 	}
 
 	return (INVALID_CMD);
-	
 }
 
 

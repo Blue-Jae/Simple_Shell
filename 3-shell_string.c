@@ -1,10 +1,8 @@
-
 #include "shell.h"
 
 /**
-
- *
- * @strlen: pointer to string
+ * strlen - pointer to string
+ * strcmp - number of characters printed
  * @fd: file descriptor to print to
  * Return: number of chars printed
  */
@@ -26,7 +24,7 @@ int _strcmp(char *str1, char *str2)
 
 	if (len1 != len2)
 		return (-1);
-	while(str1[i])
+	while (str1[i])
 	{
 		if (str1[i] != str2[i])
 			return (-1);
